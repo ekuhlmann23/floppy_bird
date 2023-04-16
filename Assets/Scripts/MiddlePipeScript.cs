@@ -4,29 +4,17 @@ using UnityEngine;
 
 public class MiddlePipeScript : MonoBehaviour
 {
-    public const int BirdLayer = 3;
-    public LogicScript Logic;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Logic = GameObject
-		    .FindGameObjectWithTag(LogicScript.LogicTag)
-		    .GetComponent<LogicScript>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameStateSO gameState;
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == BirdLayer)
+        if (collision.gameObject.layer == Layers.BirdLayer)
         {
-            Logic.IncrementScore();
-            Debug.Log("Bird scored a point.");
+            if (collision.gameObject.GetComponent<BirdScript>().IsBirdAlive)
+            {
+                gameState.IncrementScore();
+                Debug.Log("Bird scored a point.");
+            }
         } 
         
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2224992253816105572}
   - component: {fileID: 2224992253816105574}
   - component: {fileID: 2224992253816105573}
+  - component: {fileID: 8689543035064630290}
   m_Layer: 0
   m_Name: Bottom Pipe
   m_TagString: Untagged
@@ -101,6 +102,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.99999994, y: 1.9999999}
   m_Direction: 0
+--- !u!114 &8689543035064630290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224992253816105579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0641927273deae44cad9ea82fdcc6a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTakesDamageEvent: {fileID: 11400000, guid: e4ae134de8c0b25459be1064ad341c89, type: 2}
 --- !u!1 &2224992254857209690
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +175,7 @@ GameObject:
   - component: {fileID: 2224992254917137099}
   - component: {fileID: 2224992254917137093}
   - component: {fileID: 2224992254917137092}
+  - component: {fileID: 6887865324726141998}
   m_Layer: 0
   m_Name: Top Pipe
   m_TagString: Untagged
@@ -251,6 +266,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.99999994, y: 1.9999999}
   m_Direction: 0
+--- !u!114 &6887865324726141998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2224992254917137098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0641927273deae44cad9ea82fdcc6a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTakesDamageEvent: {fileID: 11400000, guid: e4ae134de8c0b25459be1064ad341c89, type: 2}
 --- !u!1 &5793933008901919869
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5971637313681401058}
-  - component: {fileID: 9072858635895286795}
+  - component: {fileID: 7565148748979653571}
   - component: {fileID: 1529407904624304068}
   m_Layer: 0
   m_Name: Middle Pipe
@@ -284,8 +312,8 @@ Transform:
   m_Father: {fileID: 2224992254857209684}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &9072858635895286795
-CircleCollider2D:
+--- !u!70 &7565148748979653571
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -298,8 +326,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.8
+  m_Size: {x: 1.5, y: 5.5}
+  m_Direction: 0
 --- !u!114 &1529407904624304068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,4 +340,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acc4c2cd335542928b97cd1edf059a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Logic: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 9a948f9f5913bd546bacf7739dd3c271, type: 2}

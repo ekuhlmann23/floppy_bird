@@ -1,36 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BirdScript : MonoBehaviour
 {
+    public InputReaderSO inputReader;
     public Rigidbody2D rigidBody;
     public float flyForce;
-
+    [FormerlySerializedAs("deadZone")]
+    public float deathZone;
+    public VoidEventChannelSO gameOverEventChannel;
 
     private bool isBirdAlive = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    public bool IsBirdAlive => isBirdAlive;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isBirdAlive)
+        if (transform.position.y < deathZone && isBirdAlive)
         {
-            rigidBody.velocity = Vector2.up * flyForce;
-		}
+            Die();
+            Destroy(gameObject);
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnEnable()
+    {
+        inputReader.BirdJumped += Jump;
+    }
+
+    private void OnDisable()
+    {
+        inputReader.BirdJumped -= Jump;
+    }
+
+    [ContextMenu("Jump")]
+    public void Jump()
     {
         if (isBirdAlive)
-        { 
-			isBirdAlive = false;
-			Debug.Log("Bird died");
-		}
+        {
+            rigidBody.velocity = Vector2.up * flyForce;
+        }
     }
 
+    [ContextMenu("Take Damage")]
+    public void TakeDamage()
+    {
+        Debug.Log("Taking damage.");
+        if (isBirdAlive)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+
+        isBirdAlive = false;
+        Debug.Log("Bird died");
+        gameOverEventChannel.RaiseEvent();
+    }
 }
