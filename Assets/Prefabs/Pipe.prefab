@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0641927273deae44cad9ea82fdcc6a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTakesDamageEvent: {fileID: 11400000, guid: e4ae134de8c0b25459be1064ad341c89, type: 2}
 --- !u!1 &2224992254857209690
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2224992254857209684}
-  - component: {fileID: 2224992254857209691}
+  - component: {fileID: 434590895583018384}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -150,7 +149,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2224992254857209691
+--- !u!114 &434590895583018384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,11 +158,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2224992254857209690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac61a52bfda0e4e0a8b947b2ad1e5555, type: 3}
+  m_Script: {fileID: 11500000, guid: e084c64356ca42d590ec1e7945d7e45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
   deathZone: -50
+  birdTakeDamageChannel: {fileID: 11400000, guid: e4ae134de8c0b25459be1064ad341c89, type: 2}
+  birdScoredPointsChannel: {fileID: 11400000, guid: 360888b7b8949fa49bddb02a5334b6cc, type: 2}
 --- !u!1 &2224992254917137098
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0641927273deae44cad9ea82fdcc6a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTakesDamageEvent: {fileID: 11400000, guid: e4ae134de8c0b25459be1064ad341c89, type: 2}
 --- !u!1 &5793933008901919869
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,4 +340,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acc4c2cd335542928b97cd1edf059a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 11400000, guid: 9a948f9f5913bd546bacf7739dd3c271, type: 2}

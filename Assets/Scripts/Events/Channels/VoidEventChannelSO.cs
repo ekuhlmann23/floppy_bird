@@ -4,15 +4,15 @@ using UnityEngine.Events;
 namespace FloppyBird.Events.Channels
 {
     [CreateAssetMenu]
-    public class VoidEventChannelSO : ScriptableObject
+    public class VoidEventChannelSO : ScriptableObject, IVoidEventChannel
     {
-        public UnityAction OnEventRaised;
+        public UnityAction onEventRaised;
 
         [ContextMenu("Raise Event")]
         public void RaiseEvent()
         {
             Debug.Log("Event raised on channel");
-            OnEventRaised?.Invoke();
+            onEventRaised?.Invoke();
         }
     }
 }

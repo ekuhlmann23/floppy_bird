@@ -30,14 +30,14 @@ namespace FloppyBird.State
         private void OnEnable()
         {
             Init();
-            gameRestartChannel.OnEventRaised += Init;
-            playerScoredChannel.OnEventRaised += SetScore;
+            gameRestartChannel.onEventRaised += Init;
+            playerScoredChannel.onEventRaised += SetScore;
         }
 
         private void OnDisable()
         {
-            gameRestartChannel.OnEventRaised -= Init;
-            playerScoredChannel.OnEventRaised -= SetScore;
+            gameRestartChannel.onEventRaised -= Init;
+            playerScoredChannel.onEventRaised -= SetScore;
         }
     }
 }

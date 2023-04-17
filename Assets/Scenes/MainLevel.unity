@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 125826882}
   - component: {fileID: 125826881}
   - component: {fileID: 125826884}
+  - component: {fileID: 125826885}
   m_Layer: 3
   m_Name: Bird
   m_TagString: Untagged
@@ -224,10 +225,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 94f5e487a743bbd4683b837f4912af91, type: 2}
-  rigidBody: {fileID: 125826883}
   flyForce: 5
   deathZone: -16
   gameOverEventChannel: {fileID: 11400000, guid: 717e12cbb9f456c408866121b512b1f7, type: 2}
+  scorepointsEventChannel: {fileID: 11400000, guid: 360888b7b8949fa49bddb02a5334b6cc, type: 2}
 --- !u!58 &125826882
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -293,6 +294,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+--- !u!114 &125826885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125826878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f49715b3112d55438d345ec2d85f881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: {fileID: 11400000, guid: 360888b7b8949fa49bddb02a5334b6cc, type: 2}
+  onEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 125826881}
+        m_TargetAssemblyTypeName: FloppyBird.Player.BirdPresenter, Assembly-CSharp
+        m_MethodName: ScorePoints
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &255004324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,7 +1237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   channel: {fileID: 11400000, guid: ef4f063387a23e74da7ff8a54798e5da, type: 2}
-  OnEventRaised:
+  onEventRaised:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1784284552}

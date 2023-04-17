@@ -15,7 +15,7 @@ namespace FloppyBird.Events.Listeners
             if (channel != null)
             {
                 Debug.Log("Registering event listener.");
-                channel.OnEventRaised += Respond;
+                channel.onEventRaised += Respond;
             }
         }
 
@@ -24,7 +24,7 @@ namespace FloppyBird.Events.Listeners
             if (channel != null)
             {
                 Debug.Log("Unregistering event listener.");
-                channel.OnEventRaised -= Respond;
+                channel.onEventRaised -= Respond;
             }
         }
 
