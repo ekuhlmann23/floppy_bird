@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
-public class VoidEventChannelSO : ScriptableObject
+namespace FloppyBird.Events.Channels
 {
-    public UnityAction OnEventRaised;
-
-    [ContextMenu("Raise Event")]
-    public void RaiseEvent()
+    [CreateAssetMenu]
+    public class VoidEventChannelSO : ScriptableObject
     {
-        Debug.Log("Event raised on channel");
-        OnEventRaised?.Invoke();
+        public UnityAction OnEventRaised;
+
+        [ContextMenu("Raise Event")]
+        public void RaiseEvent()
+        {
+            Debug.Log("Event raised on channel");
+            OnEventRaised?.Invoke();
+        }
     }
 }

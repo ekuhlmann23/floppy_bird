@@ -1,33 +1,36 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using FloppyBird.Events.Channels;
+using UnityEngine;
 
-public class IntEventListener : MonoBehaviour
+namespace FloppyBird.Events.Listeners
 {
-    public IntEventChannelSO channel;
-
-    public IntEvent OnEventRaised;
-
-    private void OnEnable()
+    public class IntEventListener : MonoBehaviour
     {
-        if (channel != null)
+        public IntEventChannelSO channel;
+
+        public IntEvent OnEventRaised;
+
+        private void OnEnable()
         {
-            Debug.Log("Registering event listener.");
-            channel.OnEventRaised += Respond;
+            if (channel != null)
+            {
+                Debug.Log("Registering event listener.");
+                channel.OnEventRaised += Respond;
+            }
         }
-    }
 
-    private void OnDisable()
-    {
-        if (channel != null)
+        private void OnDisable()
         {
-            Debug.Log("Unregistering event listener.");
-            channel.OnEventRaised -= Respond;
+            if (channel != null)
+            {
+                Debug.Log("Unregistering event listener.");
+                channel.OnEventRaised -= Respond;
+            }
         }
-    }
 
-    private void Respond(int arg)
-    {
-        Debug.Log("Triggering event response");
-        OnEventRaised?.Invoke(arg);
+        private void Respond(int arg)
+        {
+            Debug.Log("Triggering event response");
+            OnEventRaised?.Invoke(arg);
+        }
     }
 }

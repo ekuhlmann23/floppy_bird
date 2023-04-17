@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GlobalGameState
   m_EditorClassIdentifier: 
   playerScoredChannel: {fileID: 11400000, guid: ef4f063387a23e74da7ff8a54798e5da, type: 2}
+  gameRestartChannel: {fileID: 11400000, guid: b1431787fbce30d4aad4acdc350d0b3a, type: 2}
