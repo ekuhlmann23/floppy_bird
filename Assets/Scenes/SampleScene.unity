@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 125826879}
   - component: {fileID: 125826883}
   - component: {fileID: 125826882}
-  - component: {fileID: 125826881}
+  - component: {fileID: 125826884}
   m_Layer: 3
   m_Name: Bird
   m_TagString: Untagged
@@ -210,20 +210,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &125826881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125826878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6495678dea71412ab6284d1629899e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 125826883}
-  flyForce: 5
 --- !u!58 &125826882
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -261,6 +247,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &125826884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125826878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6495678dea71412ab6284d1629899e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidBody: {fileID: 125826883}
+  flyForce: 5
+  deathZone: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

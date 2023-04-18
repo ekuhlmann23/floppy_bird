@@ -37,15 +37,16 @@ public class BirdEntity
     /// Calculates the upwards velocity of the bird after jumping. 
     /// </summary>
     /// <returns>The upwards velocity of the bird.</returns>
-    /// <exception cref="DomainException">Thrown when the bird is dead.</exception>
-    public float Jump()
+    public bool TryJump(out float flyForce)
     {
-        if (IsDead)
+        if (IsAlive)
         {
-            throw new DomainException("Dead birds can't jump.");
+            flyForce = FlyForce;
+		    return true;
 		}
 
-        return FlyForce;
+        flyForce = 0;
+        return false;
     }
 
     /// <summary>
