@@ -1,9 +1,13 @@
 ﻿using System;
-public class DomainException : Exception
+
+namespace FloppyBird.Exceptions
 {
-    public DomainException(string message)
-        : base(message)
-    { 
+    public class DomainException : Exception
+    {
+        public DomainException(string message)
+            : base(message)
+        { 
+        }
     }
 }
 

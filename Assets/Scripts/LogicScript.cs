@@ -1,36 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LogicScript : MonoBehaviour
+namespace FloppyBird
 {
-    public const string LogicTag = "Logic";
-    private int score = 0;
-
-    public Text scoreText;
-
-    [ContextMenu("Increment Score")]
-    public void IncrementScore()
+    public class LogicScript : MonoBehaviour
     {
-        score++;
-        SetScore();
-    }
+        public const string LogicTag = "Logic";
+        private int _score = 0;
 
-    public void SetScore()
-    { 
-        scoreText.text = score.ToString();
-    }
+        public Text scoreText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetScore(); 
-    }
+        [ContextMenu("Increment Score")]
+        public void IncrementScore()
+        {
+            _score++;
+            SetScore();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        public void SetScore()
+        { 
+            scoreText.text = _score.ToString();
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            SetScore(); 
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }

@@ -1,43 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
-public class PipeSpawnerScript : MonoBehaviour
+namespace FloppyBird
 {
-    public GameObject pipePrefab;
-    public float spawnRateInSeconds = 3;
-    public float heightOffset;
-
-    // Start is called before the first frame update
-    void Start()
+    public class PipeSpawnerScript : MonoBehaviour
     {
-        StartCoroutine(SpawnCoroutine());
-    }
+        public GameObject pipePrefab;
+        public float spawnRateInSeconds = 3;
+        public float heightOffset;
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    IEnumerator SpawnCoroutine()
-    {
-        while (true)
+        // Start is called before the first frame update
+        void Start()
         {
-            SpawnPipe();	
-			yield return new WaitForSeconds(spawnRateInSeconds);
-		}
-    }
+            StartCoroutine(SpawnCoroutine());
+        }
 
-    private void SpawnPipe()
-    {
-        float lowestHeight = transform.position.y - heightOffset;
-        float highestHeight = transform.position.y + heightOffset;
+        // Update is called once per frame
+        void Update()
+        {
+        }
 
-        float height = Random.Range(lowestHeight, highestHeight);
+        IEnumerator SpawnCoroutine()
+        {
+            while (true)
+            {
+                SpawnPipe();	
+                yield return new WaitForSeconds(spawnRateInSeconds);
+            }
+        }
 
-        Vector3 spawnPosition = new(transform.position.x, height, 0);
+        private void SpawnPipe()
+        {
+            float lowestHeight = transform.position.y - heightOffset;
+            float highestHeight = transform.position.y + heightOffset;
 
-		Instantiate(pipePrefab, spawnPosition, transform.rotation);
+            float height = Random.Range(lowestHeight, highestHeight);
+
+            Vector3 spawnPosition = new(transform.position.x, height, 0);
+
+            Instantiate(pipePrefab, spawnPosition, transform.rotation);
+        }
     }
 }

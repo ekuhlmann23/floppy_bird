@@ -1,33 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class MiddlePipeScript : MonoBehaviour
+namespace FloppyBird
 {
-    public const int BirdLayer = 3;
-    public LogicScript Logic;
-
-    // Start is called before the first frame update
-    void Start()
+    public class MiddlePipeScript : MonoBehaviour
     {
-        Logic = GameObject
-		    .FindGameObjectWithTag(LogicScript.LogicTag)
-		    .GetComponent<LogicScript>();
-    }
+        public const int BirdLayer = 3;
+        [FormerlySerializedAs("Logic")] public LogicScript logic;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == BirdLayer)
+        // Start is called before the first frame update
+        void Start()
         {
-            Logic.IncrementScore();
-            Debug.Log("Bird scored a point.");
-        } 
+            logic = GameObject
+                .FindGameObjectWithTag(LogicScript.LogicTag)
+                .GetComponent<LogicScript>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.gameObject.layer == BirdLayer)
+            {
+                logic.IncrementScore();
+                Debug.Log("Bird scored a point.");
+            } 
+        
+        }
     }
 }

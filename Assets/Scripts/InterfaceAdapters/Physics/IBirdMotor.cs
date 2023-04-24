@@ -1,6 +1,8 @@
-﻿using System;
-public interface IBirdMotor
+﻿namespace FloppyBird.InterfaceAdapters.Physics
 {
-    public void UpdateVerticalVelocity(float upwardVelocity);
+    public interface IBirdMotor
+    {
+        public void UpdateVerticalVelocity(float upwardVelocity);
+    }
 }
 

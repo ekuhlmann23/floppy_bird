@@ -1,45 +1,51 @@
 ﻿using System;
-public class BirdUseCase : IBirdUseCase
+using FloppyBird.Entities;
+using FloppyBird.InterfaceAdapters.Physics;
+
+namespace FloppyBird.UseCases
 {
-    private readonly BirdEntity birdEntity;
-    private readonly IBirdMotor birdMotor;
-
-    public event Action BirdDied;
-
-    public BirdUseCase(BirdEntity birdEntity, IBirdMotor birdMotor)
+    public class BirdUseCase : IBirdUseCase
     {
-        this.birdEntity = birdEntity;
-        this.birdMotor = birdMotor;
-    }
+        private readonly BirdEntity _birdEntity;
+        private readonly IBirdMotor _birdMotor;
 
-    public void HandleBirdCollision()
-    {
-        if (birdEntity.TryKill())
+        public event Action BirdDied;
+
+        public BirdUseCase(BirdEntity birdEntity, IBirdMotor birdMotor)
         {
-            TriggerBirdDeath();
+            _birdEntity = birdEntity;
+            _birdMotor = birdMotor;
         }
-    }
 
-    private void TriggerBirdDeath()
-    {
-        BirdDied?.Invoke();
-    }
-
-    public void HandleJumpInput()
-    {
-        if (birdEntity.TryJump(out float flyForce))
+        public void HandleBirdCollision()
         {
-            birdMotor.UpdateVerticalVelocity(flyForce);
-	    }
-    }
+            if (_birdEntity.TryKill())
+            {
+                TriggerBirdDeath();
+            }
+        }
 
-    public void UpdateBirdPosition(float newYPosition)
-    {
-        bool birdFellOutOfBounds = birdEntity.UpdateYPosition(newYPosition);
-        if (birdFellOutOfBounds)
+        private void TriggerBirdDeath()
         {
-            TriggerBirdDeath();
-		}
+            BirdDied?.Invoke();
+        }
+
+        public void HandleJumpInput()
+        {
+            if (_birdEntity.TryJump(out float flyForce))
+            {
+                _birdMotor.UpdateVerticalVelocity(flyForce);
+            }
+        }
+
+        public void UpdateBirdPosition(float newYPosition)
+        {
+            bool birdFellOutOfBounds = _birdEntity.UpdateYPosition(newYPosition);
+            if (birdFellOutOfBounds)
+            {
+                TriggerBirdDeath();
+            }
+        }
     }
 }
 
