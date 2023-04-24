@@ -1,4 +1,5 @@
 ﻿using System;
+using FloppyBird.Core.Entities;
 
 namespace FloppyBird.Application.UseCases
 {
@@ -7,8 +8,10 @@ namespace FloppyBird.Application.UseCases
         public void UpdateBirdPosition(float newYPosition);
         public void HandleJumpInput();
         public void HandleBirdCollision();
-
-        public event Action BirdDied;
+        public void Initialize(
+            float flyForce,
+            float yPosition,
+            float deathZone);
     }
 }
 

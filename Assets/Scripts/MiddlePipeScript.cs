@@ -9,17 +9,11 @@ namespace FloppyBird
         [FormerlySerializedAs("Logic")] public LogicScript logic;
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             logic = GameObject
                 .FindGameObjectWithTag(LogicScript.LogicTag)
                 .GetComponent<LogicScript>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
 
         private void OnTriggerExit2D(Collider2D collision)

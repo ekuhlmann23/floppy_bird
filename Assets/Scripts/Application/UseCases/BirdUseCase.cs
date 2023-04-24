@@ -1,20 +1,30 @@
 ﻿using System;
 using FloppyBird.Core.Drivers.Physics;
 using FloppyBird.Core.Entities;
+using FloppyBird.Core.Events;
+using FloppyBird.Core.EventSystem;
 
 namespace FloppyBird.Application.UseCases
 {
     public class BirdUseCase : IBirdUseCase
     {
-        private readonly BirdEntity _birdEntity;
+        private readonly IEventChannel _eventChannel;
         private readonly IBirdMotor _birdMotor;
+        
+        private BirdEntity _birdEntity;
 
-        public event Action BirdDied;
-
-        public BirdUseCase(BirdEntity birdEntity, IBirdMotor birdMotor)
+        public BirdUseCase(IEventChannel eventChannel, IBirdMotor birdMotor)
         {
-            _birdEntity = birdEntity;
+            _eventChannel = eventChannel;
             _birdMotor = birdMotor;
+        }
+
+        public void Initialize(
+            float flyForce,
+            float yPosition,
+            float deathZone)
+        {
+            _birdEntity = new(flyForce, yPosition, deathZone);
         }
 
         public void HandleBirdCollision()
@@ -27,7 +37,7 @@ namespace FloppyBird.Application.UseCases
 
         private void TriggerBirdDeath()
         {
-            BirdDied?.Invoke();
+            _eventChannel.Raise<BirdDiedEvent>();
         }
 
         public void HandleJumpInput()

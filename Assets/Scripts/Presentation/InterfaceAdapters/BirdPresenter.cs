@@ -1,30 +1,33 @@
 using FloppyBird.Application.UseCases;
-using FloppyBird.Core.Drivers.Physics;
-using FloppyBird.Core.Entities;
+using FloppyBird.Core.Events;
+using FloppyBird.Core.EventSystem;
 using UnityEngine;
+using Zenject;
 
 namespace FloppyBird.Presentation.InterfaceAdapters
 {
-    public class BirdPresenter : MonoBehaviour, IBirdMotor
+    public class BirdPresenter : MonoBehaviour
     {
-        public Rigidbody2D rigidBody;
         public float flyForce;
         public float deathZone;
 
-        private BirdEntity _birdEntity;
+        [Inject]
         private IBirdUseCase _birdUseCase;
+        
+        [Inject]
+        private IEventChannel _eventChannel;
 
         // Start is called before the first frame update
         void Start()
         {
-            _birdEntity = new(flyForce, transform.position.y, deathZone);
-            _birdUseCase = new BirdUseCase(_birdEntity, this);
-            _birdUseCase.BirdDied += OnBirdDied;
+            _birdUseCase.Initialize(flyForce, transform.position.y, deathZone);
+
+            _eventChannel.Subscribe<BirdDiedEvent>(OnBirdDied);
         }
 
         private void OnDestroy()
         {
-            _birdUseCase.BirdDied -= OnBirdDied;
+            _eventChannel.Unsubscribe<BirdDiedEvent>(OnBirdDied);
         }
 
         // Update is called once per frame
@@ -40,21 +43,13 @@ namespace FloppyBird.Presentation.InterfaceAdapters
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (_birdEntity.TryKill())
-            {
-                OnBirdDied();
-            }
+            _birdUseCase.HandleBirdCollision();
         }
 
         private void OnBirdDied()
         { 
             Debug.Log("Bird died");
             Destroy(gameObject);
-        }
-
-        public void UpdateVerticalVelocity(float upwardVelocity)
-        {
-            rigidBody.velocity = Vector2.up * upwardVelocity;
         }
     }
 }

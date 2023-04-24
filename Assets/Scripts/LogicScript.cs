@@ -23,15 +23,9 @@ namespace FloppyBird
         }
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             SetScore(); 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 }

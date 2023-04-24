@@ -123,7 +123,7 @@
       }
     },
     "com.unity.ide.rider": {
-      "version": "3.0.18",
+      "version": "3.0.21",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -241,6 +241,13 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "xyz.candycoded.env": {
+      "version": "https://github.com/CandyCoded/env.git#v1.1.2",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "aefda8e07418cb6b9671284ba667cc690655792a"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
