@@ -1,9 +1,9 @@
-using FloppyBird.Entities;
-using FloppyBird.InterfaceAdapters.Physics;
-using FloppyBird.UseCases;
+using FloppyBird.Application.UseCases;
+using FloppyBird.Core.Drivers.Physics;
+using FloppyBird.Core.Entities;
 using UnityEngine;
 
-namespace FloppyBird
+namespace FloppyBird.Presentation.InterfaceAdapters
 {
     public class BirdPresenter : MonoBehaviour, IBirdMotor
     {

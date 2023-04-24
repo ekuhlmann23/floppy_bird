@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FloppyBird.UseCases
+namespace FloppyBird.Application.UseCases
 {
     public interface IBirdUseCase
     {

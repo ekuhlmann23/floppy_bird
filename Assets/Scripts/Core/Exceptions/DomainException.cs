@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FloppyBird.Exceptions
+namespace FloppyBird.Core.Exceptions
 {
     public class DomainException : Exception
     {

@@ -1,7 +1,7 @@
 ﻿using System;
-using FloppyBird.Exceptions;
+using FloppyBird.Core.Exceptions;
 
-namespace FloppyBird.Entities
+namespace FloppyBird.Core.Entities
 {
     public class BirdEntity
     {

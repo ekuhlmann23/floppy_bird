@@ -1,0 +1,16 @@
+{
+    "name": "Application",
+    "rootNamespace": "FloppyBird",
+    "references": [
+        "GUID:50737a54d35c41fd90aaf97dec78147b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

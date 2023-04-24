@@ -1,8 +1,8 @@
 ﻿using System;
-using FloppyBird.Entities;
-using FloppyBird.InterfaceAdapters.Physics;
+using FloppyBird.Core.Drivers.Physics;
+using FloppyBird.Core.Entities;
 
-namespace FloppyBird.UseCases
+namespace FloppyBird.Application.UseCases
 {
     public class BirdUseCase : IBirdUseCase
     {
