@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FloppyBird.InterfaceAdapters.GameObjects
+namespace FloppyBird.Drivers.GameObjects
 {
     public interface ISpawner
     {

@@ -1,7 +1,7 @@
-﻿using FloppyBird.InterfaceAdapters.GameObjects;
+﻿using FloppyBird.Drivers.GameObjects;
 using UnityEngine;
 
-namespace FloppyBird.InterfaceAdapters.Factories
+namespace FloppyBird.Factories
 {
     public class PipeSpawner : IPipeSpawner
     {

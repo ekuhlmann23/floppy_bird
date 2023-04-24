@@ -1,9 +1,9 @@
 using System.Collections;
-using FloppyBird.InterfaceAdapters.Factories;
-using FloppyBird.InterfaceAdapters.GameObjects;
+using FloppyBird.Drivers.GameObjects;
+using FloppyBird.Factories;
 using UnityEngine;
 
-namespace FloppyBird.Pipes
+namespace FloppyBird.Presenters
 {
     public class PipeSpawnerPresenter : MonoBehaviour, ISpawner
     {

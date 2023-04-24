@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace FloppyBird.UI
+namespace FloppyBird.Presenters.UI
 {
     [RequireComponent(typeof(Text))]
     public class ScoreScript : MonoBehaviour

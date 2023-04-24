@@ -1,7 +1,7 @@
 using FloppyBird.Events.Channels;
 using UnityEngine;
 
-namespace FloppyBird.UI
+namespace FloppyBird.Presenters.UI
 {
     public class GameOverScript : MonoBehaviour
     {

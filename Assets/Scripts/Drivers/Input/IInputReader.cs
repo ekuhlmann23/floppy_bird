@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FloppyBird.InterfaceAdapters.Input
+namespace FloppyBird.Drivers.Input
 {
     public interface IInputReader
     {

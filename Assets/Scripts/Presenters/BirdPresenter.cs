@@ -1,12 +1,13 @@
+using FloppyBird.Drivers.Input;
+using FloppyBird.Drivers.Physics;
 using FloppyBird.Entities;
 using FloppyBird.Events.Channels;
 using FloppyBird.InterfaceAdapters.Input;
-using FloppyBird.InterfaceAdapters.Physics;
 using FloppyBird.UseCases.Bird;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace FloppyBird.Player
+namespace FloppyBird.Presenters
 {
     [RequireComponent(typeof(Rigidbody2D))]
     public class BirdPresenter : MonoBehaviour, IBirdMovementMotor

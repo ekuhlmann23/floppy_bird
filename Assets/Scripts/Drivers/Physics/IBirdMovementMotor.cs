@@ -1,4 +1,4 @@
-﻿namespace FloppyBird.InterfaceAdapters.Physics
+﻿namespace FloppyBird.Drivers.Physics
 {
     public interface IBirdMovementMotor
     {

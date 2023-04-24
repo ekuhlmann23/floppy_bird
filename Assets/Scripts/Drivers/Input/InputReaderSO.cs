@@ -1,8 +1,9 @@
 using System;
+using FloppyBird.InterfaceAdapters.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace FloppyBird.InterfaceAdapters.Input
+namespace FloppyBird.Drivers.Input
 {
     [CreateAssetMenu]
     public class InputReaderSO : ScriptableObject, GameInput.IGameplayActions, IInputReader

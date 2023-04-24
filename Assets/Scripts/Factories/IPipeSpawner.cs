@@ -1,4 +1,4 @@
-﻿namespace FloppyBird.InterfaceAdapters.Factories
+﻿namespace FloppyBird.Factories
 {
     public interface IPipeSpawner
     {

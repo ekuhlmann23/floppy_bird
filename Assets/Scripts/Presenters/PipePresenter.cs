@@ -1,7 +1,7 @@
 ﻿using System;
+using FloppyBird.Drivers.GameObjects;
 using FloppyBird.Entities;
 using FloppyBird.Events.Channels;
-using FloppyBird.InterfaceAdapters.GameObjects;
 using FloppyBird.UseCases.Pipes;
 using UnityEngine;
 

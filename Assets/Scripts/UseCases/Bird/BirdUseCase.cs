@@ -1,6 +1,6 @@
-﻿using FloppyBird.Entities;
+﻿using FloppyBird.Drivers.Physics;
+using FloppyBird.Entities;
 using FloppyBird.Events.Channels;
-using FloppyBird.InterfaceAdapters.Physics;
 
 namespace FloppyBird.UseCases.Bird
 {

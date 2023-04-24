@@ -1,11 +1,8 @@
 using FloppyBird.Core;
-using FloppyBird.Events.Channels;
-using FloppyBird.Player;
-using FloppyBird.Presenters;
 using FloppyBird.UseCases.Pipes;
 using UnityEngine;
 
-namespace FloppyBird.Pipes
+namespace FloppyBird.Presenters.Pipes
 {
     public class MiddlePipeScript : MonoBehaviour
     {
