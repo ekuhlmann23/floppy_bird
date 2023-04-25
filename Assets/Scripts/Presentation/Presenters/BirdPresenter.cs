@@ -1,5 +1,7 @@
 using FloppyBird.Application.UseCases;
+using FloppyBird.Domain.Repositories;
 using UnityEngine;
+using Zenject;
 
 namespace FloppyBird.Presentation.Presenters
 {
@@ -9,12 +11,15 @@ namespace FloppyBird.Presentation.Presenters
         public float flyForce;
         public float deathZone;
 
+        [Inject]
         private IBirdUseCase _birdUseCase;
+
+        [Inject]
+        private IHighScoreRepository _highScoreRepository;
 
         // Start is called before the first frame update
         void Start()
         {
-            _birdUseCase = new BirdUseCase();
             _birdUseCase.Initialize(flyForce, transform.position.y, deathZone);
         }
 
@@ -47,6 +52,7 @@ namespace FloppyBird.Presentation.Presenters
         private void OnBirdDied()
         { 
             Debug.Log("Bird died");
+            Debug.Log(_highScoreRepository.GetHighestScore());
         }
 
     }
