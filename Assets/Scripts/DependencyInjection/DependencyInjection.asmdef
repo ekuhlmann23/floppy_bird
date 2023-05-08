@@ -1,0 +1,20 @@
+{
+    "name": "DependencyInjection",
+    "rootNamespace": "FloppyBird",
+    "references": [
+        "GUID:4a57d11665ae9e8468707f6c545f625c",
+        "GUID:6a2bf07d7fba2f04f942df823f2042fd",
+        "GUID:122587414ff736c4293271127f2eb320",
+        "GUID:08b96f5d6f42c89438d292241c2943d3",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
