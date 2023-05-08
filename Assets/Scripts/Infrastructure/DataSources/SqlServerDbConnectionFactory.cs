@@ -1,14 +1,24 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
+using FloppyBird.Domain.Drivers;
 
 namespace FloppyBird.Infrastructure.DataSources
 {
     public class SqlServerDbConnectionFactory : IDbConnectionFactory
     {
+        private const string ConnectionStringEnvironmentVariable = "CONNECTION_STRING";
+        
+        private readonly IEnvironmentManager _environmentManager;
+
+        public SqlServerDbConnectionFactory(IEnvironmentManager environmentManager)
+        {
+            _environmentManager = environmentManager;
+        }
+        
         public IDbConnection Create()
         {
-            return new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=FloppyBIrd.Database;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
+            var connectionString = _environmentManager.GetEnvironmentVariable(ConnectionStringEnvironmentVariable);
+            return new SqlConnection(connectionString);
         }
     }
 }
