@@ -1,5 +1,7 @@
+using System;
 using FloppyBird.Application.UseCases;
 using FloppyBird.Domain.Repositories;
+using FloppyBird.Presentation.InterfaceAdapters.Input;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +12,7 @@ namespace FloppyBird.Presentation.Presenters
         public Rigidbody2D rigidBody;
         public float flyForce;
         public float deathZone;
+        public InputReaderSO inputReader;
 
         [Inject]
         private IBirdUseCase _birdUseCase;
@@ -21,6 +24,12 @@ namespace FloppyBird.Presentation.Presenters
         void Start()
         {
             _birdUseCase.Initialize(flyForce, transform.position.y, deathZone);
+            inputReader.BirdJump += OnBirdJump;
+        }
+
+        private void OnDestroy()
+        {
+            inputReader.BirdJump -= OnBirdJump;
         }
 
         // Update is called once per frame
@@ -31,13 +40,13 @@ namespace FloppyBird.Presentation.Presenters
             {
                 OnBirdDied();
             }
+        }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+        private void OnBirdJump()
+        {
+            if (_birdUseCase.TryBirdJump(out float flyForce))
             {
-                if (_birdUseCase.TryBirdJump(out float flyForce))
-                { 
-                    rigidBody.velocity = Vector2.up * flyForce;
-                }
+                rigidBody.velocity = Vector2.up * flyForce;
             }
         }
 

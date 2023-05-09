@@ -3,7 +3,8 @@
     "rootNamespace": "FloppyBird",
     "references": [
         "GUID:6a2bf07d7fba2f04f942df823f2042fd",
-        "GUID:4a57d11665ae9e8468707f6c545f625c"
+        "GUID:4a57d11665ae9e8468707f6c545f625c",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
