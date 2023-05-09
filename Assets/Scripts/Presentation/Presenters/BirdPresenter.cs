@@ -1,67 +1,66 @@
-using System;
 using FloppyBird.Application.UseCases;
+using FloppyBird.Domain.Events;
+using FloppyBird.Domain.EventSystem;
 using FloppyBird.Domain.Repositories;
+using FloppyBird.Presentation.InterfaceAdapters;
 using FloppyBird.Presentation.InterfaceAdapters.Input;
 using UnityEngine;
 using Zenject;
 
 namespace FloppyBird.Presentation.Presenters
 {
+    
+    [RequireComponent(typeof(BirdMovement))]
     public class BirdPresenter : MonoBehaviour
     {
-        public Rigidbody2D rigidBody;
         public float flyForce;
         public float deathZone;
         public InputReaderSO inputReader;
+
+        private BirdMovement _birdMovement;
 
         [Inject]
         private IBirdUseCase _birdUseCase;
 
         [Inject]
-        private IHighScoreRepository _highScoreRepository;
+        private IEventChannel _eventChannel;
 
         // Start is called before the first frame update
         void Start()
         {
-            _birdUseCase.Initialize(flyForce, transform.position.y, deathZone);
+            _eventChannel.Subscribe<BirdDiedEvent>(OnBirdDied);
             inputReader.BirdJump += OnBirdJump;
+            _birdMovement = GetComponent<BirdMovement>();
+            _birdUseCase.Initialize(_birdMovement, flyForce, transform.position.y, deathZone);
+        }
+
+        private void OnBirdJump()
+        {
+            _birdUseCase.BirdJump();
         }
 
         private void OnDestroy()
         {
             inputReader.BirdJump -= OnBirdJump;
+            _eventChannel.Unsubscribe<BirdDiedEvent>(OnBirdDied);
         }
 
         // Update is called once per frame
         void Update()
         {
-            bool birdFellOutOfBounds = _birdUseCase.UpdateBirdPosition(transform.position.y);
-            if (birdFellOutOfBounds)
-            {
-                OnBirdDied();
-            }
-        }
-
-        private void OnBirdJump()
-        {
-            if (_birdUseCase.TryBirdJump(out float flyForce))
-            {
-                rigidBody.velocity = Vector2.up * flyForce;
-            }
+            _birdUseCase.UpdateBirdPosition(transform.position.y);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (_birdUseCase.BirdCollide())
-            {
-                OnBirdDied();
-            }
+            _birdUseCase.BirdCollide();
         }
 
-        private void OnBirdDied()
+        private void OnBirdDied(BirdDiedEvent birdDiedEvent)
         { 
             Debug.Log("Bird died");
-            Debug.Log(_highScoreRepository.GetHighestScore());
+            Destroy(gameObject);
+            // Debug.Log(_highScoreRepository.GetHighestScore());
         }
 
     }

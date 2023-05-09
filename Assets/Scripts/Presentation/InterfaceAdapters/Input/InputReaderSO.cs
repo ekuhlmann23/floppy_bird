@@ -17,6 +17,7 @@ namespace FloppyBird.Presentation.InterfaceAdapters.Input
             if (_gameInput == null)
             {
                 _gameInput = new GameInput();
+                _gameInput.Gameplay.AddCallbacks(this);
                 _gameInput.Gameplay.Enable();
             }
         }
