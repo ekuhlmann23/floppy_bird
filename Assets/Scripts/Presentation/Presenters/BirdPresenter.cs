@@ -1,4 +1,5 @@
 using FloppyBird.Application.UseCases;
+using FloppyBird.Domain.Drivers;
 using FloppyBird.Domain.Events;
 using FloppyBird.Domain.EventSystem;
 using FloppyBird.Domain.Repositories;
@@ -24,6 +25,9 @@ namespace FloppyBird.Presentation.Presenters
 
         [Inject]
         private IEventChannel _eventChannel;
+
+        [Inject]
+        private IDateTimeProvider _dateTimeProvider;
 
         // Start is called before the first frame update
         void Start()
@@ -58,7 +62,7 @@ namespace FloppyBird.Presentation.Presenters
 
         private void OnBirdDied(BirdDiedEvent birdDiedEvent)
         { 
-            Debug.Log("Bird died");
+            Debug.Log($"Bird died at {_dateTimeProvider.GetCurrentTime()}");
             Destroy(gameObject);
             // Debug.Log(_highScoreRepository.GetHighestScore());
         }

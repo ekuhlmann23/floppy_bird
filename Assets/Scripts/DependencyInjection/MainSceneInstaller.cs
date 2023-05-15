@@ -36,6 +36,10 @@ namespace FloppyBird.DependencyInjection
             Container.Bind<IDbConnectionFactory>()
                 .To<SqlServerDbConnectionFactory>()
                 .AsSingle();
+
+            Container.Bind<IDateTimeProvider>()
+                .To<DummyDateTimeProvider>()
+                .AsSingle();
         }
 
         private void DeclareGameEvents()
