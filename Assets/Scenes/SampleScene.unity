@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 125826883}
   - component: {fileID: 125826882}
   - component: {fileID: 125826884}
+  - component: {fileID: 125826885}
   m_Layer: 3
   m_Name: Bird
   m_TagString: Untagged
@@ -336,9 +337,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6495678dea71412ab6284d1629899e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidBody: {fileID: 125826883}
   flyForce: 5
   deathZone: 10
+  inputReader: {fileID: 11400000, guid: bc790079150a24547be9eede982c56e1, type: 2}
+--- !u!114 &125826885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125826878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486faac45a83246389f9913df8730ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
