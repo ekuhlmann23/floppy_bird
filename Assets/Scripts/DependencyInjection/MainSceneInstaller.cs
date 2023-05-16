@@ -40,6 +40,14 @@ namespace FloppyBird.DependencyInjection
             Container.Bind<IDateTimeProvider>()
                 .To<DummyDateTimeProvider>()
                 .AsSingle();
+
+            Container.Bind<IPlayerRepository>()
+                .To<PlayerRepository>()
+                .AsSingle();
+
+            Container.Bind<IPlayerScoresUseCase>()
+                .To<PlayerScoresUseCase>()
+                .AsSingle();
         }
 
         private void DeclareGameEvents()

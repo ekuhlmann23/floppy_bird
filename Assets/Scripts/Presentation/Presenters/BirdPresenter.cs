@@ -1,8 +1,9 @@
+using System.Linq;
 using FloppyBird.Application.UseCases;
 using FloppyBird.Domain.Drivers;
+using FloppyBird.Domain.Entities;
 using FloppyBird.Domain.Events;
 using FloppyBird.Domain.EventSystem;
-using FloppyBird.Domain.Repositories;
 using FloppyBird.Presentation.InterfaceAdapters;
 using FloppyBird.Presentation.InterfaceAdapters.Input;
 using UnityEngine;
@@ -28,6 +29,9 @@ namespace FloppyBird.Presentation.Presenters
 
         [Inject]
         private IDateTimeProvider _dateTimeProvider;
+
+        [Inject]
+        private IPlayerScoresUseCase _playerScoresUseCase;
 
         // Start is called before the first frame update
         void Start()
@@ -60,11 +64,13 @@ namespace FloppyBird.Presentation.Presenters
             _birdUseCase.BirdCollide();
         }
 
-        private void OnBirdDied(BirdDiedEvent birdDiedEvent)
+        private async void OnBirdDied(BirdDiedEvent birdDiedEvent)
         { 
             Debug.Log($"Bird died at {_dateTimeProvider.GetCurrentTime()}");
+            var player = await _playerScoresUseCase.LoadPlayerWithScoresAsync("ABC");
+
+            Debug.Log(player.HighScores.FirstOrDefault()?.Score);
             Destroy(gameObject);
-            // Debug.Log(_highScoreRepository.GetHighestScore());
         }
 
     }
